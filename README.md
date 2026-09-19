@@ -34,7 +34,7 @@ MM-Food-100K 包含约10万组食物图像和文本标注，提供菜名、食�
 | GPT-4o | 视觉语言模型直接回归 | 50,000 | 95.8 | 144.3 | 0.706 |
 
 主要结论：GPT-4o 整体优于 Qwen-Max；增加训练数据后 MAE 和 RMSE 均下降；由于标签主要是AI估计值，结果不能直接和真实称重数据集进行公平比较。
-ViT-FoodNA: An End-to-End Transformer-Based Multimodal Framework for Food Recognition and Nutrition Analysis（端到端transformer）
+ViT-FoodNA: An End-to-End Transformer-Based Multimodal Framework for Food Recognition and Nutrition Analysis（端到端transformer），ViT-FoodNA 的 MAE 11.3 因评估协议不明需要单独标注。
 
 ## 3. Nutrition5k
 
@@ -113,7 +113,7 @@ SimpleFood45 包含约513张真实食物图像，提供食物类别、体积、�
 **原始论文**：Liang & Li, *Computer vision-based food calorie estimation: dataset, method, and experiment*, arXiv 2017
 **链接**：https://arxiv.org/pdf/1705.07632
 
-**后续基准论文**：Frontiers in Nutrition 2026
+**后续基准论文**：Integrative AI driven microbiome analysis for optimizing sports nutrition and enhancing athletic performance through personalized dietary interventions
 **链接**：https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2026.1754203/full
 
 ECUSTFD 包含约2978张图像、19类食物，并提供食物体积和重量信息。原始论文使用俯视图和侧视图进行检测、体积估计和卡路里计算。
