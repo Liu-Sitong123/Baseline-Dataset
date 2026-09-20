@@ -113,7 +113,7 @@ SimpleFood45 包含约513张真实食物图像，提供食物类别、体积、�
 **原始论文**：Liang & Li, *Computer vision-based food calorie estimation: dataset, method, and experiment*, arXiv 2017
 **链接**：https://arxiv.org/pdf/1705.07632
 
-**后续基准论文**：Integrative AI driven microbiome analysis for optimizing sports nutrition and enhancing athletic performance through personalized dietary interventions
+**后续论文**：Integrative AI driven microbiome analysis for optimizing sports nutrition and enhancing athletic performance through personalized dietary interventions
 **链接**：https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2026.1754203/full
 
 ECUSTFD 包含约2978张图像、19类食物，并提供食物体积和重量信息。原始论文使用俯视图和侧视图进行检测、体积估计和卡路里计算。
@@ -150,6 +150,27 @@ CC-Food-100 主要用于中国大学食堂场景下的食物检测和识别，�
 
 论文主要报告食物检测性能，没有报告统一的卡路里 MAE、RMSE 或 R²。因此，CC-Food-100 更适合作为食物检测数据集或RGB-D食物识别数据集，不应与 Nutrition5k 或 SimpleFood45 的卡路里回归结果直接比较。
 
+##补充：pic2kcal（插入到 ECUSTFD 之后、CC-Food-100 之前，作为新的一节）
+
+论文：Ruede et al., Multi-Task Learning for Calorie Prediction on a Novel Large-Scale Recipe Dataset Enriched with Nutritional Information, arXiv 2011.01082（ICPR 2020 workshop）
+链接：https://arxiv.org/abs/2011.01082
+代码：https://github.com/phiresky/pic2kcal/
+
+pic2kcal 是一个从德国菜谱网站爬取的大规模真实场景数据集：70,000 份菜谱、308,000 张图片，卡路里真值不靠用户自报，而是通过食材文本匹配营养数据库反推（食材量+每份克数→加总卡路里）。数据集按 70%/15%/15% 划分训练/验证/测试，并保证同一菜谱的图片不跨集分布——这个切分方式的细致程度，可以直接作为你 ECUSTFD 划分方案的参考模板。
+
+代表性结果（按每100g食物预测，DenseNet121 主干）
+方法	思路	相对误差↓	kcal MAE↓
+随机基线	随机取一份菜谱的值作为预测	0.595	83.3
+均值基线	始终预测训练集均值	0.464	60.5
+仅卡路里回归	单任务，只预测卡路里	0.362	50.3
++宏量营养素	同时预测蛋白质/脂肪/碳水	0.345	49.0
++食材多标签（完整多任务）	同时预测卡路里+宏量营养素+前100食材	0.326	46.9
+
+##补充：Nutrition5k 当前权威榜单（插入到 3.4 "关键发现"之后，作为新的 3.5 节）
+
+Nutrition5k 上有一个持续更新的公开排行榜（SOTA2 Research，聚合各论文自报的 Calories PMAE 等指标）。以下给出网页链接：
+
+https://www.sota2.com/research/sota/nutrition-estimation-on-nutrition5k
 
 ## 7. Food-101
 
